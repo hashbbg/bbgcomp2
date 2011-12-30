@@ -39,6 +39,11 @@ It's mostly a learning experienced, and a chance to compare your solution to a g
 
 ## Rules
 
+#### Content restriction
+
+* Use only content you have a legal right to.
+* PG13 content.  There's no problem with serious topics, but curb the explicit content.
+
 #### Dates
 
 The competition runs between Jan 1st and Feb 1st.  Submit your entries to me by midnight Feb 1st local time.  If you can submit a .zip / link me to a github repo w/ your game in index.html and a README of your name, #bbg tag ( if you have one ) and any development notes you want to include for the benefit of others, that'd make it much easier!.
