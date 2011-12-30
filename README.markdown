@@ -8,7 +8,7 @@ The timelimit is 12 hours, although this can be spread out as you like between J
 
 #### Selecting a Genre for the competition
 
-The competition will be based on a single genre for all entrants. That genre will be randomly selected from the _Genre List_ below on jan 1st, at midday GTM.
+The competition will be based on a single genre for all entrants. That genre will be randomly selected from the _Genre List_ below on jan 1st, at midday GMT.
 
 If you want to see another game genre on that list, ask for it at #bbg or tweet at me (@hughfdjackson).
 
