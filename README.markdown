@@ -8,11 +8,11 @@ The timelimit is 12 hours, although this can be spread out as you like between J
 
 The genre will be randomly selected from a list submitted to me on jan 1st.  Submit either via twitter @hughfdjackson w/ the hashtag #bbgcomp2, or in freenode's #bbg.  
 
-The reason for the random selection is to stop people just picking for the fan-favourite genre.  To get developers to move out of their comfort zone and consider different styles of games than they normally would.
+The reason for the random selection is to stop people just voting for the fan-favourite genre, to get developers to move out of their comfort zone and consider different styles of games than they normally would.
 
 However, some games genres would be really impractical to make in 12 hours.  For that reason, if you *really* feel like a genre is infeasible, you'll get a chance to downvote it on the 1st.  If, in the space of 4 hours from the announcement, 50% or more of the votes for a genre are downvotes, we'll mulligan (removing that genre from the list).  The *first* announcement will be made at noon GMT.
 
-Submit your down or up votes via twitter or in #bbg.
+Submit your down or up votes via twitter to @hughfdjackson or in #bbg.
 
 #### Genre List (so far):
 
@@ -34,7 +34,7 @@ Submit your down or up votes via twitter or in #bbg.
 
 ## Motivation
 
-It's mostly a learning experienced, and a chance to compare your solution to a genre's problems with that of your peers.
+It's mostly a learning experience, and a chance to compare your solution to a genre's problems with that of your peers.
  Who doesn't want that?
 
 ## Rules
@@ -44,7 +44,7 @@ It's mostly a learning experienced, and a chance to compare your solution to a g
 * Use only content you have a legal right to.
 * PG13 content.  There's no problem with serious topics, but curb the explicit content.
 
-#### Dates
+#### Dates and submission
 
 The competition runs between Jan 1st and Feb 1st.  Submit your entries to me by midnight Feb 1st local time.  If you can submit a .zip / link me to a github repo w/ your game in index.html and a README of your name, #bbg tag ( if you have one ) and any development notes you want to include for the benefit of others, that'd make it much easier!
 
