@@ -26,7 +26,7 @@ The reason for the random selection is to stop people voting for the fan-favouri
 * platform
 * puzzle
 * point & click adventure
-* jRPG
+* jRPG (a la final fantasy)
 * turn-based war strat (a la advance wars)
 * RTS
 * text-based adventure
