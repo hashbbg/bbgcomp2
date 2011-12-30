@@ -49,7 +49,7 @@ It's mostly a learning experience, and a chance to compare your solution to a ge
 
 The competition runs between Jan 1st and Feb 1st.  Submit your entries to me by midnight Feb 1st local time.  If you can submit a .zip / link me to a github repo w/ your game in index.html and a README of your name, #bbg tag ( if you have one ) and any development notes you want to include for the benefit of others, that'd make it much easier!
 
-N.B. All submissions are going to be open sourced (i.e. available through this repo).  If you're using propriatory tools, you'll have to host the game itself yourself, and provide a link.  You *must* submit your personal source code though.
+N.B. All submissions are going to be open sourced (i.e. available through this repo).  If you're using proprietary tools, you'll have to host the game itself yourself, and provide a link.  You *must* submit your personal source code though.
 
 #### Time restriction
 
