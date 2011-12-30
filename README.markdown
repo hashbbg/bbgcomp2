@@ -32,6 +32,7 @@ The reason for the random selection is to stop people voting for the fan-favouri
 * RTS
 * text-based adventure
 * dating sim
+* sports
 
 ## Motivation
 
