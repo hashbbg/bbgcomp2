@@ -6,15 +6,14 @@ The timelimit is 12 hours, although this can be spread out as you like between J
 
 ## Genres
 
-The competition will be based on a single genre for all entrants. That genre will be randomly selected from a list submitted to me on jan 1st.  Submit either via twitter @hughfdjackson w/ the hashtag #bbgcomp2, or in freenode's #bbg.  
+#### Selecting a Genre for the competition
 
-The reason for the random selection is to stop people voting for the fan-favourite genre; to get developers to move out of their comfort zone and consider different styles of games than they normally would.
+The competition will be based on a single genre for all entrants. That genre will be randomly selected from the _Genre List_ below on jan 1st.
 
-However, some games genres would be really impractical to make in 12 hours.  If the genre that is randomly selected *really* seems infeasible to you, you will get the chance to downvote that game (or, if you feel it has been unfairly downvoted, to upvote it) on Jan 1st. 
+If you want to see another game genre on that list, ask for it at #bbg or tweet at me (@hughfdjackson).
 
-If a genre receives more downvotes than upvotes in the 4 hours after its selection, it will be removed from the list, and another genre will be randomly selected.  The first random selection will be announced at mid-day GMT, and your votes can be submitted at #bbg or via twitter to @hughfdjackson, preferably with the hashtag #bbgcomp2.
+The reason for the random selection is to stop people voting for the fan-favourite genre; to get developers to move out of their comfort zone and consider different styles of games than they normally would.  The genre will be selected at midday on Jan 1st.
 
-_Please do not use your votes to avoid a genre you don't personally enjoy - use them for genres you think are inherently too ambitious._
 
 #### Genre List (so far):
 
