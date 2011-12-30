@@ -29,7 +29,7 @@ The reason for the random selection is to stop people voting for the fan-favouri
 * jRPG (a la final fantasy)
 * turn-based war strat (a la advance wars)
 * RTS
-* text-based adventure
+* text-based adventure (predominantly text, other media used for mood)
 * dating sim
 * sports
 
