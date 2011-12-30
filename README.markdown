@@ -1,18 +1,20 @@
 # Browser-Based game competition
 
-Over at freenode's #bbg irc channel, we're having a friendly game contest - a time-limited browser-based game contest, where all participants create a game around a randomly selected *genre* (not theme).  After it's all done, we'll get together and play/critique each other's games.
+Over at freenode's #bbg irc channel, we're having a friendly game contest - a time-limited browser-based game contest, where all participants create a game around one randomly selected *genre* (not theme).  After it's all done, we'll get together and play/critique each other's games.
 
 The timelimit is 12 hours, although this can be spread out as you like between Jan 1st and Feb 1st.
 
 ## Genres
 
-The genre will be randomly selected from a list submitted to me on jan 1st.  Submit either via twitter @hughfdjackson w/ the hashtag #bbgcomp2, or in freenode's #bbg.  
+The competition will be based on a single genre for all entrants. That genre will be randomly selected from a list submitted to me on jan 1st.  Submit either via twitter @hughfdjackson w/ the hashtag #bbgcomp2, or in freenode's #bbg.  
 
-The reason for the random selection is to stop people just voting for the fan-favourite genre, to get developers to move out of their comfort zone and consider different styles of games than they normally would.
+The reason for the random selection is to stop people voting for the fan-favourite genre; to get developers to move out of their comfort zone and consider different styles of games than they normally would.
 
-However, some games genres would be really impractical to make in 12 hours.  For that reason, if you *really* feel like a genre is infeasible, you'll get a chance to downvote it on the 1st.  If, in the space of 4 hours from the announcement, 50% or more of the votes for a genre are downvotes, we'll mulligan (removing that genre from the list).  The *first* announcement will be made at noon GMT.
+However, some games genres would be really impractical to make in 12 hours.  If the genre that is randomly selected *really* seems infeasible to you, you will get the chance to downvote that game (or, if you feel it has been unfairly downvoted, to upvote it) on Jan 1st. 
 
-Submit your down or up votes via twitter to @hughfdjackson or in #bbg.
+If a genre receives more downvotes than upvotes in the 4 hours after its selection, it will be removed from the list, and another genre will be randomly selected.  The first random selection will be announced at mid-day GMT, and your votes can be submitted at #bbg or via twitter to @hughfdjackson, preferably with the hashtag #bbgcomp2.
+
+_Please do not use your votes to avoid a genre you don't personally enjoy - use them for genres you think are inherently too ambitious._
 
 #### Genre List (so far):
 
