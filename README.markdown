@@ -8,7 +8,7 @@ The timelimit is 12 hours, although this can be spread out as you like between J
 
 The genre will be randomly selected from a list submitted to me on jan 31st.  Submit either via twitter @hughfdjackson w/ the hashtag #bbgcomp2, or in freenode's #bbg.  
 
-Obviously, not all genres make a great candidates for time-limited games, so any genres that get 50% or more down-votes in #bbg or over twitter will be removed from the list.
+Obviously, not all genres make a great candidates for time-limited games, so any genres that get 50% or more down-votes in #bbg or over twitter will be removed from the list.  *Downvoting will only apply if a genre gets selected*
 
 #### Genre List:
 
