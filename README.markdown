@@ -6,11 +6,15 @@ The timelimit is 12 hours, although this can be spread out as you like between J
 
 ## Genres
 
-The genre will be randomly selected from a list submitted to me on jan 31st.  Submit either via twitter @hughfdjackson w/ the hashtag #bbgcomp2, or in freenode's #bbg.  
+The genre will be randomly selected from a list submitted to me on jan 1st.  Submit either via twitter @hughfdjackson w/ the hashtag #bbgcomp2, or in freenode's #bbg.  
 
-Obviously, not all genres make a great candidates for time-limited games, so any genres that get 50% or more down-votes in #bbg or over twitter will be removed from the list.  *Downvoting will only apply if a genre gets selected*
+The reason for the random selection is to stop people just picking for the fan-favourite genre.  To get developers to move out of their comfort zone and consider different styles of games than they normally would.
 
-#### Genre List:
+However, some games genres would be really impractical to make in 12 hours.  For that reason, if you *really* feel like a genre is infeasible, you'll get a chance to downvote it on the 1st.  If, in the space of 4 hours from the announcement, 50% or more of the votes for a genre are downvotes, we'll mulligan (removing that genre from the list).  The *first* announcement will be made at noon GMT.
+
+Submit your down or up votes via twitter or in #bbg.
+
+#### Genre List (so far):
 
 * beat-em-up (a la streets of rage)
 * FPS
@@ -55,4 +59,6 @@ Use any lib or tool you like.  It's all fair game (no .. pun intended. honest).
 
 #### Platform
 
-Given that this is a competition for the browser-based games channel, the games will have to be .. browser-based.
+Given that this is a competition for the browser-based games channel, the games will have to be .. browser-based.  
+
+Having said that, though, since 12 hours is a tight deadline, feel free to specify that it only works on one particular platform (say, Chrome or Firefox).  Keep in mind that you benefit from more people being able to play your game, so if you specify some crazy tech, you may get fewer players and, therefore, less crit.
