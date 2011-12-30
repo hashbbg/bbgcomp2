@@ -8,12 +8,11 @@ The timelimit is 12 hours, although this can be spread out as you like between J
 
 #### Selecting a Genre for the competition
 
-The competition will be based on a single genre for all entrants. That genre will be randomly selected from the _Genre List_ below on jan 1st.
+The competition will be based on a single genre for all entrants. That genre will be randomly selected from the _Genre List_ below on jan 1st, at midday GTM.
 
 If you want to see another game genre on that list, ask for it at #bbg or tweet at me (@hughfdjackson).
 
-The reason for the random selection is to stop people voting for the fan-favourite genre; to get developers to move out of their comfort zone and consider different styles of games than they normally would.  The genre will be selected at midday on Jan 1st.
-
+The reason for the random selection is to stop people voting for the fan-favourite genre; to get developers to move out of their comfort zone and consider different styles of games than they normally would.
 
 #### Genre List (so far):
 
