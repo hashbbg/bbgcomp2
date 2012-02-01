@@ -1,0 +1,51 @@
+==== #BBGCOMP2 ====
+
+--- Info ---
+
+Name: Jiří "NoxArt" Petruželka
+Twitter: @NoxArt (#NoxArt)
+
+Game: SpiritBeacon (#SpiritBeacon)
+Live URL: http://spiritbeacon.noxart.cz/
+
+
+
+--- Development notes ---
+
+Sources:
+
+Music:
+http://incompetech.com/m/c/royalty-free/
+cool place with quality and free music, search by feel feature
+
+Snippets: 
+http://paulirish.com/2011/requestanimationframe-for-smart-animating/
+https://gist.github.com/992342 (slightly optimized)
+
+JS libraries:
+
+jQuery
+- it's unimaginable without it, right? :)
+
+SugarJS
+-sure there's _, but this is so much more convenient to work with
+
+Font:
+DirtyEgo by Misprinted Type from http://www.dafont.com/
+conversion to OTF by http://www.font2web.com/
+
+
+
+Software:
+
+Music:
+http://audioconverter.hamstersoft.com/en/ (conversion to .ogg) 
+
+Graphics:
+Photoshop CS4
+XnView
+
+Programming:
+Netbeans 7.1
+PSPad
+

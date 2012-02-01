@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="css/style.css" />
+<script type="text/javascript" src="js/Box2dWeb-2.1.a.3.js"></script>
+<script type="text/javascript" src="js/engine.js?v=3"></script>
+<script type="text/javascript" src="js/game.js?v=3"></script>
+<script type="text/javascript" src="js/Stats.js"></script>
+</head>
+<body>
+    <canvas id="game" width="640" height="480"></canvas>
+    <br />Press 'C' to shoot
+    <script type="text/javascript">              
+        /*var stats = new Stats();
+
+// Align top-left
+stats.domElement.style.position = 'absolute';
+stats.domElement.style.right = '0px';
+stats.domElement.style.top = '0px';
+
+document.body.appendChild( stats.domElement );
+
+setInterval( function () {
+
+    stats.update();
+
+}, 1000 / 60 );
+        */
+                var g = new Game();
+                g.showFPS = true;
+                var menu = new MenuState();
+                var state = new PlayingStatus(menu);                
+                menu.playingstate = state;
+                g.startGame('game', state );                                
+            </script>
+</body>
+</html>

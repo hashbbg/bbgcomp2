@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+	<title>BumbleBomber</title>
+
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="Starfish Web Consulting" />
+
+    <meta name="viewport" content="width=480, height=320, user-scalable=no, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+
+<link href='http://fonts.googleapis.com/css?family=Eater' rel='stylesheet' type='text/css'>
+
+	<style type="text/css">
+		body { margin: 0; padding: 0; text-align: center; font-family: sans-serif; background: #000; color: #fff; position: relative; }
+        #SF_Wrap { display: block; margin: 0 auto; padding: 0; width: 480px; height: 320px; position: relative; background: transparent; position: relative; }
+        #SF_Game { position: absolute; top: 0; left: 0; background: transparent; }
+
+        #textLayer { position: absolute; bottom: 70px; left: 0; width: 480px; background: rgba(0,0,0,0.1); z-index: 1000; }
+        #textLayer p { text-align: center; padding: 5px 0; margin: 0; font-family: monospace; }
+        #textLayer a { color: #fff; text-decoration: none; font-weight: bold; }
+        #textLayer a:hover { color: #f0f; }
+</style>
+
+</head>
+
+<body onload="SF_gameStart();">
+
+<noscript>
+	<h1>To play this game you will need to enable javascript</h1>
+</noscript>
+
+
+<div id="SF_Wrap">
+	<canvas id="SF_Game"></canvas>
+    <div id="textLayer">
+        <p>
+            &copy; Starfish Arcade
+            <br />
+            <a href="http://twitter.com/eoinmcg">@eoinmcg</a> 
+        </p>
+    </div>
+</div>
+
+<script type="text/javascript" src="core/base.js"></script>
+<script type="text/javascript" src="core/game.js"></script>
+<script type="text/javascript" src="core/audio.js"></script>
+<script type="text/javascript" src="core/ua.js"></script>
+<script type="text/javascript" src="core/sprite.js"></script>
+<script type="text/javascript" src="core/animation.js"></script>
+<script type="text/javascript" src="core/explosion.js"></script>
+<script type="text/javascript" src="core/input.js"></script>
+<script type="text/javascript" src="core/draw.js"></script>
+<script type="text/javascript" src="core/console.js"></script>
+
+<script type="text/javascript" src="libs/buzz.js"></script>
+<script type="text/javascript" src="libs/stats.js"></script>
+
+<script type="text/javascript" src="bumble/data.js"></script>
+<script type="text/javascript" src="bumble/cloud.js"></script>
+<script type="text/javascript" src="bumble/fly.js"></script>
+<script type="text/javascript" src="bumble/plant.js"></script>
+<script type="text/javascript" src="bumble/snot.js"></script>
+<script type="text/javascript" src="bumble/bullet.js"></script>
+<script type="text/javascript" src="bumble/player.js"></script>
+<script type="text/javascript" src="bumble/bumble.js"></script>
+<script type="text/javascript">
+
+    function SF_gameStart() {
+        if (!!document.createElement('canvas').getContext === false) {
+
+            document.writeln('<h1>Your browser does not support canvas</h1>');
+            document.writeln('<h2>To play this game you will need to upgrade your browser</h2>');
+
+        }
+        else {
+            var game = new SF.Bumble();
+            game.init();
+        }
+    }
+
+
+</script>
+
+<script>
+    var _gaq=[["_setAccount","UA-1015118-50"],["_trackPageview"]];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
+    g.src=("https:"==location.protocol?"//ssl":"//www")+".google-analytics.com/ga.js";
+    s.parentNode.insertBefore(g,s)}(document,"script"));
+</script>
+
+</body>
+
+</html>

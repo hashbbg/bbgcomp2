@@ -1,0 +1,14 @@
+html {
+    padding : 0;
+    margin  : 0;
+    
+}
+
+body {
+    width   : 800px;
+    margin  : 0 auto;
+}
+
+h1, h2 { 
+    text-align: center;
+}

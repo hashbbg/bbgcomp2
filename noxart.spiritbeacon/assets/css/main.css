@@ -1,0 +1,243 @@
+/**
+ * SpiritBeacon main CSS file
+ *
+ * @author Jiří "NoxArt" Petruzelka | petruzelka@noxart.cz | @NoxArt
+ */
+ 
+/** --- Reset --------------------------------------------------------------- */
+
+/**
+ * html5doctor.com Reset Stylesheet (Eric Meyer's Reset Reloaded + HTML5 baseline)
+ * v1.6.1 2010-09-17 | Authors: Eric Meyer & Richard Clark
+ * html5doctor.com/html-5-reset-stylesheet/
+ */
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+blockquote, q { quotes: none; }
+blockquote:before, blockquote:after,
+q:before, q:after { content: ""; content: none; }
+ins { background-color: #ff9; color: #000; text-decoration: none; }
+mark { background-color: #ff9; color: #000; font-style: italic; font-weight: bold; }
+del { text-decoration: line-through; }
+abbr[title], dfn[title] { border-bottom: 1px dotted; cursor: help; }
+table { border-collapse: collapse; border-spacing: 0; }
+hr { display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: 1em 0; padding: 0; }
+input, select { vertical-align: middle; }
+body { font:13px/1.231 sans-serif; *font-size:small; }
+select, input, textarea, button { font:99% sans-serif; }
+pre, code, kbd, samp { font-family: monospace, sans-serif; }
+
+/* Micro clearfix */
+/* For modern browsers */
+.cf:before,
+.cf:after {
+    content:"";
+    display:table;
+}
+.cf:after {
+    clear:both;
+}
+
+/* For IE 6/7 (trigger hasLayout) */
+.cf {
+    zoom:1;
+}
+
+
+/** --- Core ---------------------------------------------------------------- */
+
+strong {
+	font-weight: bold;
+}
+
+i {
+	font-style: italic;
+}
+
+@font-face {
+	font-family: "DirtyEgo";
+	src: url("../fonts/DIRTYEGO.eot");
+	src: local('☺'),
+		 url("../fonts/DIRTYEGO.woff") format('woff'),
+		 url("../fonts/DIRTYEGO.ttf") format('truetype'),
+		 url("../fonts/DIRTYEGO.svg") format('svg');
+}
+
+a {
+	color: rgb(245,245,255);
+	text-decoration: none;
+	border-bottom: 1px dotted rgb(235,215,245);
+}
+
+html, body {
+	font-family: "Segoe UI", Tahoma, Sans-serif;
+	color: rgb(245,245,245);
+	background: black url("../images/background.jpg");
+}
+
+html {
+	margin: 20px;
+}
+
+body {
+	margin: 0 auto;
+}
+
+body, section {
+	width: 100%;
+	height: auto;
+}
+
+header {
+	font: 40px "DirtyEgo", "Segoe UI", Tahoma, Sans-serif;
+	margin-bottom: 15px;
+}
+header a {
+	border: none;
+}
+
+section {
+	border: 3px solid rgb(32,31,31);
+	border-radius: 5px;
+	background: rgb(22,21,21) url("../images/bottom-decor.png") no-repeat center bottom;
+	padding-bottom: 17px;
+}
+
+canvas {
+	border: 1px double rgb(30,30,30);
+	border-bottom-color: rgb(23,22,22);
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+}
+
+footer {
+	font: 22px "DirtyEgo", "Segoe UI", Tahoma, Sans-serif;
+	color: rgb(100,100,100);
+}
+
+footer a {
+	color: rgb(160,160,160);
+	border-bottom: none;
+}
+
+.box {
+	padding: 50px;
+	font-size: 120%;
+}
+
+.box h2 {
+	margin-bottom: 60px;
+}
+
+.box a.start {
+	color: rgb(255,235,100);
+	font-weight: bold;
+	font-size: 250%;
+}
+
+.box a {
+	cursor: pointer;
+	display: block;
+	margin-bottom: 30px;
+	border: none;
+}
+
+#gameover h2 {
+	color: rgb(200,10,0);
+	font-weight: bold;
+	font-size: 170%;
+	margin-bottom: 10px
+}
+
+#gameover h3 {
+	color: rgb(110,200,0);
+	font-weight: bold;
+	font-size: 190%;
+}
+
+#gameover a {
+	display: block;
+	margin-top: 20px;
+	margin-bottom: 25px;
+	font-size: 170%;
+}
+
+#gameover ul {
+	margin-bottom: 50px;
+}
+
+.box h3 {
+	color: rgb(222,130,20);
+	font-weight: bold;
+	margin-top: 60px;
+	margin-bottom: 20px;
+}
+
+dt, dd {
+	font-size: 90%;
+}
+
+dt {
+	font-weight: bold;
+	clear: left;
+}
+
+dd {
+	margin-left: 80px;
+}
+
+/*dt.odd,dd.odd {
+	background: rgb(60,60,60);
+}*/
+
+.power-ups li {
+	width: 450px;
+	font-size: 75%;
+	list-style-type: none;
+	line-height: 2;
+}
+
+.power-ups img {
+	width: 20px;
+	position: relative;
+	top: 5px;
+	padding-right: 5px;
+}
+
+.power-ups strong {
+	padding-right: 5px;
+}
+
+#scoreboard {
+	width: 600px;
+}
+
+#scoreboard table {
+	width: 100%;
+}
+#scoreboard th{
+	font-weight: bold;
+}
+
+#scoreboard th, #scoreboard td {
+	text-align: center;
+}

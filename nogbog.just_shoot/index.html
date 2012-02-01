@@ -1,0 +1,749 @@
+<html>
+<head>
+<title>Just Shoot - BBGcomp2 Entry</title>
+</head>
+<body>
+<canvas id="background" width="1024" height="640" style="position:absolute; left:0; top:0; background-color: #000;"></canvas>
+<canvas id="canvas" width="1024" height="640" style="position:absolute; left:0; top:0;"></canvas>
+<h1 id="output" style="position:absolute; left:10; top:650;">output</h1>
+<pre style="position:absolute; left:10; top:700;">-= Instructions =-
+Shoot the enemies. Game was not completed, so after the first few waves of enemies nothing happens.
+Move: WASD or ARROW KEYS
+Shoot: SPACE
+</pre>
+<audio id='music' src='music.mp3' loop></audio>
+<script type="text/javascript" src="js/assetmanager.js"></script>
+<script type="text/javascript" src="js/keyboard.js"></script>
+<script type="text/javascript" src="js/engine.js"></script>
+<script type="text/javascript" src="js/background.js"></script>
+<script type="text/javascript">
+window.requestAnimFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+
+function getVector( angle ){
+	var vector;
+	switch ( angle ) {
+		case 0: vector = { x: 1, y: 0 }; break;
+		case 5.625: vector = { x: 1, y: 0.1 }; break;
+		case 11.25: vector = { x: 0.98, y: 0.2 }; break;
+		case 16.875: vector = { x: 0.96, y: 0.29 }; break;
+		case 22.5: vector = { x: 0.92, y: 0.38 }; break;
+		case 28.125: vector = { x: 0.88, y: 0.47 }; break;
+		case 33.75: vector = { x: 0.83, y: 0.56 }; break;
+		case 39.375: vector = { x: 0.77, y: 0.63 }; break;
+		case 45: vector = { x: 0.71, y: 0.71 }; break;
+		case 50.625: vector = { x: 0.63, y: 0.77 }; break;
+		case 56.25: vector = { x: 0.56, y: 0.83 }; break;
+		case 61.875: vector = { x: 0.47, y: 0.88 }; break;
+		case 67.5: vector = { x: 0.38, y: 0.92 }; break;
+		case 73.125: vector = { x: 0.29, y: 0.96 }; break;
+		case 78.75: vector = { x: 0.2, y: 0.98 }; break;
+		case 84.375: vector = { x: 0.1, y: 1 }; break;
+		case 90: vector = { x: 0, y: 1 }; break;
+		case 95.625: vector = { x: -0.1, y: 1 }; break;
+		case 101.25: vector = { x: -0.2, y: 0.98 }; break;
+		case 106.875: vector = { x: -0.29, y: 0.96 }; break;
+		case 112.5: vector = { x: -0.38, y: 0.92 }; break;
+		case 118.125: vector = { x: -0.47, y: 0.88 }; break;
+		case 123.75: vector = { x: -0.56, y: 0.83 }; break;
+		case 129.375: vector = { x: -0.63, y: 0.77 }; break;
+		case 135: vector = { x: -0.71, y: 0.71 }; break;
+		case 140.625: vector = { x: -0.77, y: 0.63 }; break;
+		case 146.25: vector = { x: -0.83, y: 0.56 }; break;
+		case 151.875: vector = { x: -0.88, y: 0.47 }; break;
+		case 157.5: vector = { x: -0.92, y: 0.38 }; break;
+		case 163.125: vector = { x: -0.96, y: 0.29 }; break;
+		case 168.75: vector = { x: -0.98, y: 0.2 }; break;
+		case 174.375: vector = { x: -1, y: 0.1 }; break;
+		case 180: vector = { x: -1, y: 0 }; break;
+		case 185.625: vector = { x: -1, y: -0.1 }; break;
+		case 191.25: vector = { x: -0.98, y: -0.2 }; break;
+		case 196.875: vector = { x: -0.96, y: -0.29 }; break;
+		case 202.5: vector = { x: -0.92, y: -0.38 }; break;
+		case 208.125: vector = { x: -0.88, y: -0.47 }; break;
+		case 213.75: vector = { x: -0.83, y: -0.56 }; break;
+		case 219.375: vector = { x: -0.77, y: -0.63 }; break;
+		case 225: vector = { x: -0.71, y: -0.71 }; break;
+		case 230.625: vector = { x: -0.63, y: -0.77 }; break;
+		case 236.25: vector = { x: -0.56, y: -0.83 }; break;
+		case 241.875: vector = { x: -0.47, y: -0.88 }; break;
+		case 247.5: vector = { x: -0.38, y: -0.92 }; break;
+		case 253.125: vector = { x: -0.29, y: -0.96 }; break;
+		case 258.75: vector = { x: -0.2, y: -0.98 }; break;
+		case 264.375: vector = { x: -0.1, y: -1 }; break;
+		case 270: vector = { x: 0, y: -1 }; break;
+		case 275.625: vector = { x: 0.1, y: -1 }; break;
+		case 281.25: vector = { x: 0.2, y: -0.98 }; break;
+		case 286.875: vector = { x: 0.29, y: -0.96 }; break;
+		case 292.5: vector = { x: 0.38, y: -0.92 }; break;
+		case 298.125: vector = { x: 0.47, y: -0.88 }; break;
+		case 303.75: vector = { x: 0.56, y: -0.83 }; break;
+		case 309.375: vector = { x: 0.63, y: -0.77 }; break;
+		case 315: vector = { x: 0.71, y: -0.71 }; break;
+		case 320.625: vector = { x: 0.77, y: -0.63 }; break;
+		case 326.25: vector = { x: 0.83, y: -0.56 }; break;
+		case 331.875: vector = { x: 0.88, y: -0.47 }; break;
+		case 337.5: vector = { x: 0.92, y: -0.38 }; break;
+		case 343.125: vector = { x: 0.96, y: -0.29 }; break;
+		case 348.75: vector = { x: 0.98, y: -0.2 }; break;
+		case 354.375: vector = { x: 1, y: -0.1 }; break;
+		case 360: vector = { x: 1, y: 0 }; break;
+		default: console.log("Angle does not exist");
+	}
+	return vector;
+}
+
+////////////////////////////////////////////////////////////////
+///////////////////// Player Controls //////////////////////////
+////////////////////////////////////////////////////////////////
+function InputMove(){
+	if (isKeyDown){
+		var modifier = game.clockTick;
+		var distance = this.speed * modifier;
+		var dir = { x: 0, y: 0 };
+		
+		if (isKeyDown('w') || isKeyDown('up')) { dir.y = -1; } else if ( isKeyDown('s') || isKeyDown('down')) { dir.y = 1; }
+		if (isKeyDown('a') || isKeyDown('left')) { dir.x = -1; } else if (isKeyDown('d') || isKeyDown('right')) { dir.x = 1;	}
+		
+		if ( this.x + (dir.x * distance) > 0 && this.x+this.w+ (dir.x * distance) < game.width){ this.x += dir.x * distance; }
+		if ( this.y+ (dir.y * distance) > 0 && this.y+this.h+ (dir.y * distance) < game.height ){ this.y += dir.y * distance; }
+
+		// SHOOTING
+		if (!this.weaponType){
+			this.weaponType = 'normal';
+		} else {
+			if (!this.shootDelay || this.shootDelay == 0){
+				this.shootDelay = 1; // This is a counter
+			} else {
+				this.shootDelay++;
+				switch(this.weaponType){
+					case 'normal':
+						var delay = 5;
+						if (this.shootDelay > 5) this.shootDelay = 0;
+						if ( isKeyDown('space') && this.shootDelay == delay ){
+							var shootFrom = { x: this.x + this.w/2, y: this.y, weaponLevel: this.weaponLevel };
+							shoot(shootFrom, null, 'normal');
+							this.shootDelay = 0;
+						}
+						break;
+					case 'laser':
+						// if (this.laser == undefined) { this.laser = false; }
+						if ( isKeyDown('space') && !this.laser){
+							this.laser = true;
+							var shootFrom = { x: this.x + this.w/2, y: this.y-640, weaponLevel: this.weaponLevel };
+							shoot(shootFrom, null, 'laser');
+						} else if ( !isKeyDown('space') && this.laser){
+							this.laser = false;
+							setLastPosition(playerEntity.laserObj); // REQUIRED TO FIX LASER ARTIFACT GLITCH
+							playerEntity.laserObj.clear(game.context); // REQUIRED TO FIX LASER ARTIFACT GLITCH
+							playerEntity.laserObj.removeFromWorld = true;
+						}
+						break;
+				}
+			}
+		}
+	}
+}
+
+
+////////////////////////////////////////////////////////////////
+//////////////////// Object Functions //////////////////////////
+////////////////////////////////////////////////////////////////
+
+function ObjActive(x,y,w,h){
+	this.x = x;
+	this.y = y;
+	this.w = w;
+	this.h = h;
+	this.removeFromWorld = false;
+	this.last = { x: null, y: null };
+	this.color = '0,255,0';
+	this.update;
+	this.draw;
+}
+
+function setLastPosition(obj){
+	obj.last.y = obj.y;
+	obj.last.x = obj.x;
+}
+
+function ObjClear(ctx){
+	var x = (0.5 + this.last.x) | 0; // Bitwise rounding hack
+	var y = (0.5 + this.last.y) | 0; // Bitwise rounding hack
+	// ctx.clearRect(x-2, y-2, this.w+4, this.h+4);
+	ctx.clearRect(x-20, y-20, this.w+40, this.h+40); // Size changes depending on glow size
+}
+
+function ObjDraw(){
+	var x = (0.5 + this.x) | 0; // Bitwise rounding hack
+	var y = (0.5 + this.y) | 0; // Bitwise rounding hack
+	// context.globalCompositeOperation = 'lighter'; // Super slow on Firefox
+	
+	switch(this.name){
+		case 'player': game.context.drawImage(sprites,96*0,0,87,87, x, y, 87, 87); break;
+		case 'enemy1': game.context.drawImage(sprites,96*1,0,87,87, x, y, 87, 87); break;
+		case 'enemy2': game.context.drawImage(sprites,96*2,0,87,103, x, y, 87, 103); break;
+		case 'enemy3': game.context.drawImage(sprites,96*3,0,103,103, x, y, 103, 103); break;
+		case 'enemy4': game.context.drawImage(sprites,96*4,0,71,111, x, y, 71, 111); break;
+		case 'enemy5': game.context.drawImage(sprites,96*5,0,71,71, x, y, 71, 71); break;
+		case 'enemy6': game.context.drawImage(sprites,96*6,0,63,63, x, y, 63, 63); break;
+		case 'bullet':
+			game.context.fillStyle = '#F00';
+			game.context.fillRect(x,y,8,8);
+			break;
+		case 'playerbullet':
+			game.context.fillStyle = '#FFF';
+			game.context.fillRect(x,y,8,8);
+			break;
+	}
+	
+	/*
+	// Extra Effects
+	for (var i=2; i < 10; i+=2){
+		var alpha = 1/i;
+		game.context.fillStyle = 'rgba('+this.color+','+alpha+')';
+		game.context.fillRect(x-i, y-i, this.w+i*2, this.h+i*2);
+	}
+	game.context.fillStyle = 'rgba('+this.color+',1)';
+	
+	// Original
+	game.context.fillStyle = 'rgba('+this.color+',1)';
+	game.context.fillRect(x, y, this.w, this.h);
+	*/
+}
+
+////////////////////////////////////////////////////////////////
+///////////////////// Object Updates ///////////////////////////
+////////////////////////////////////////////////////////////////
+function ObjUpdatePlayer(){
+	setLastPosition(this);
+	this.inputMove();
+	document.getElementById('output').innerHTML = '#entities: ' + game.entities.length;
+}
+
+function ObjUpdateEnemy(){
+	setLastPosition(this);
+	if (this.movement) { this.movement(); }
+	if (this.x < -100 || this.x > game.width + 100){ this.removeFromWorld = true; }
+	if (this.y < -100 || this.y > game.height + 100){ this.removeFromWorld = true; }
+	if (this.hp < 0) this.removeFromWorld = true;
+}
+
+function ObjUpdateBullet(){ // Enemy Bullet
+	setLastPosition(this);
+	if (this.movement) { this.movement(); }
+	if (this.x < -50 || this.x > game.width + 50){ this.removeFromWorld = true; }
+	if (this.y < -50 || this.y > game.height + 50){ this.removeFromWorld = true; }
+	// Collision Check
+	var distx = Math.abs( (playerEntity.x + playerEntity.w/2) - (this.x + this.w/2) );
+	var disty = Math.abs( (playerEntity.y + playerEntity.h/2) - (this.y + this.h/2) );
+	if ( distx < 10 && disty < 10 ) this.removeFromWorld = true;
+}
+
+function ObjUpdatePlayerBullet(){
+	setLastPosition(this);
+	if (this.movement) { this.movement(); }
+	if (this.x < -50 || this.x > game.width + 50){ this.removeFromWorld = true; }
+	if (this.y < -50 || this.y > game.height + 50){ this.removeFromWorld = true; }
+	// Collision Check
+	for (var i=1; i < game.entities.length; i++){
+		if ( game.entities[i].name == "enemy0" || 
+					game.entities[i].name == "enemy1" ||
+					game.entities[i].name == "enemy2" ||
+					game.entities[i].name == "enemy3" ||
+					game.entities[i].name == "enemy4" ||
+					game.entities[i].name == "enemy5" ||
+					game.entities[i].name == "enemy6"
+				){
+			var hitDistance = game.entities[i].w/2;
+			var distx = Math.abs( (game.entities[i].x + game.entities[i].w/2) - (this.x + this.w/2) );
+			var disty = Math.abs( (game.entities[i].y + game.entities[i].h/2) - (this.y + this.h/2) );
+			if ( distx < hitDistance && disty < hitDistance ){
+				// game.entities[i].removeFromWorld = true; // Replace with reduce HP 
+				game.entities[i].hp--;
+				this.removeFromWorld = true;
+				// document.getElementById('background').getContext('2d').fillStyle = 'Red';
+				// document.getElementById('background').getContext('2d').fillRect( (game.entities[i].x + game.entities[i].w/2), (game.entities[i].y + game.entities[i].h/2), 20, 20);
+			}
+		}
+	}
+}
+
+function ObjUpdateLaser(){
+	setLastPosition(this);
+	if (this.movement) { this.movement(); }
+}
+
+function ObjUpdatePowerup(){
+	setLastPosition(this);
+	var modifier = game.clockTick;
+	if ( this.x < 0 || this.x+this.w > game.width ){ this.dx = -this.dx; }
+	if ( this.y < 0 || this.y+this.h > game.height ){ this.dy = -this.dy; }
+	this.x += this.dx * this.speed * modifier; // + this.speed * modifier;
+	this.y += this.dy * this.speed * modifier; // + this.speed * modifier;
+	// Collision Check
+	var distx = Math.abs( (playerEntity.x + playerEntity.w/2) - (this.x + this.w/2) );
+	var disty = Math.abs( (playerEntity.y + playerEntity.h/2) - (this.y + this.h/2) );
+	if ( distx < 10 && disty < 10 ) this.removeFromWorld = true;
+}
+
+////////////////////////////////////////////////////////////////
+//////////////// Enemy Movement Functions //////////////////////
+////////////////////////////////////////////////////////////////
+
+function MoveDownUp(){
+	var modifier = game.clockTick;
+	this.y += this.speed * modifier;
+	this.speed--;
+}
+function MoveDown(){
+	var modifier = game.clockTick;
+	if (!this.counter){
+		this.counter = 1;
+	} else if (this.counter%20 == 0){
+		this.counter++;
+		this.y += this.speed * modifier;
+		if (this.y < playerEntity.y){
+			shoot(this, game.entities[0], 'atPlayer');
+		}
+	} else {
+		this.counter++;
+		this.y += this.speed * modifier;
+	}
+}
+
+function MoveWaveLarge(){
+	var modifier = game.clockTick;
+	var amp = 200; // Size
+	if (!this.speedX && !this.originalX){
+		// Set variables
+		this.speedX = 4; // Percentage 4 = 400%
+		this.originalX = this.x;
+	} else {
+		// Main Stuff
+		this.x = Math.sin(this.y * this.speedX * modifier) * amp + this.originalX ;
+		this.y += this.speed * modifier;
+	}
+}
+
+function MoveWave(){
+	var modifier = game.clockTick;
+	var amp = 20; // Size
+	if (!this.speedX && !this.originalX){
+		// Set variables
+		this.speedX = 4; // Percentage 4 = 400%
+		this.originalX = this.x;
+	} else  {
+		// Main Stuff
+		this.x = Math.sin(this.y * this.speedX * modifier) * amp + this.originalX ;
+		this.y += this.speed * modifier;
+	}
+}
+
+function MoveSquareWave(){
+	var modifier = game.clockTick;
+	if (!this.dir && !this.moveLength && !this.moveCounter){
+		// If they doesn't exist, then set them
+		this.dir = { x: 1, y: 0 };
+		this.moveLength = { x: game.width-(this.x * 2), y: 100 };
+		this.moveCounter = { x: this.moveLength.x, y: this.moveLength.y };
+	} else {
+		// Main stuff
+		if ( this.dir.y == 0 ){
+			var dx = this.speed * modifier * this.dir.x;
+			this.x += dx;
+			this.moveCounter.x -= dx;
+			if ( this.moveCounter.x < 0 || this.moveCounter.x > this.moveLength.x ){
+				this.dir.y = 1;
+				this.dir.x = -this.dir.x;
+			}
+		} else if ( this.dir.y == 1 ){
+			var dy = this.speed * modifier * this.dir.y;
+			this.y += dy;
+			this.moveCounter.y -= dy;
+			if ( this.moveCounter.y < 0 ){
+				this.moveCounter.y = this.moveLength.y;
+				this.dir.y = 0;
+			}
+		}
+	}
+}
+
+////////////////////////////////////////////////////////////////
+/////////// Enemy/Bullet Move at angle function ////////////////
+////////////////////////////////////////////////////////////////
+function MoveAngle(){
+	var modifier = game.clockTick;
+	var dx = this.speed * modifier * this.vector.x;
+	var dy = this.speed * modifier * this.vector.y;
+	this.x += dx;
+	this.y += dy;
+}
+////////////////////////////////////////////////////////////////
+////////////////// Player weapon function //////////////////////
+////////////////////////////////////////////////////////////////
+function MoveLaser(){
+	this.x = playerEntity.x + playerEntity.w/2;
+	this.y = playerEntity.y-640;
+}
+
+////////////////////////////////////////////////////////////////
+/////////////// Bullet Movement Functions //////////////////////
+////////////////////////////////////////////////////////////////
+
+function MoveLoop(){
+	var modifier = game.clockTick;
+	if (!this.counter && !this.originalY && !this.originalX){
+		// Set Variables
+		this.counter = 0;
+		this.originalX = this.x;
+		this.originalY = this.y;
+	} else {
+		// Main Stuff
+		var speed = 2;
+		this.counter += speed;
+		this.originalY += modifier * 30;
+		if ( this.counter > 360 ) this.counter = 0; // Reset the counter just so it doesn't get too high
+		var a = 100; // Ellipse Width
+		var b = 50; // Ellipse Height
+		var alpha = this.counter * (3.14/180);
+		this.x = this.originalX + (a * Math.cos(alpha)) - a;
+		this.y = this.originalY + (b * Math.sin(alpha));
+	}
+}
+
+function MoveGravity(){
+	var modifier = game.clockTick;
+	if (!this.velocityX && !this.velocityY && !this.friction && !this.dir && !this.counter && !this.originalX && !this.originalY){
+		// Set Variables
+		var minVel = 40;
+		var maxVel = 60;
+		var velX = Math.floor(Math.random() * (maxVel - minVel + 1)) + minVel;
+		this.originalX = this.x;
+		this.originalY = this.y;
+		this.dir = (Math.floor(Math.random() * (10 - (-10) + 1)) + -10)/10;
+		this.velocityX = velX * this.dir;
+		this.velocityY = velX;
+		this.counter = 50;
+	} else {
+		// Main Stuff
+		if (this.counter > 0){
+			this.counter--;
+			this.x += this.velocityX * modifier;
+			this.y += this.velocityY * modifier * -1 * this.counter/10; // -1 makes it go up
+		} else {
+			this.velocityY += 1; // Accelerates the Y movement
+			this.x += this.velocityX * modifier;
+			this.y += this.velocityY * modifier;
+		}
+	}
+}
+
+////////////////////////////////////////////////////////////////
+///////////////// Shooting Bullets Functions ///////////////////
+////////////////////////////////////////////////////////////////
+function shoot(originObj, target, type){
+	var speed = 300;
+	switch(type){
+		case 'fanRight':
+			for (var i=0; i<8; i+=2){ game.addEntity( new EnemyBullet(originObj.x, originObj.y, speed, 11.25*i, 'MoveAngle') ); }
+			for (var i=26; i<32; i+=2){ game.addEntity( new EnemyBullet(originObj.x, originObj.y, speed, 11.25*i, 'MoveAngle') ); }
+			break;
+		case 'fanLeft':
+			for (var i=10; i<24; i+=2){ game.addEntity( new EnemyBullet(originObj.x, originObj.y, speed, 11.25*i, 'MoveAngle') ); } // 9 bullets 
+			break;
+		case 'fanDown': 
+			for (var i=2; i<16; i+=2){ game.addEntity( new EnemyBullet(originObj.x, originObj.y, speed, 11.25*i, 'MoveAngle') ); } // 6 bullets
+			break;
+		case 'triple': 
+			for (var i=4; i<16; i+=4){ game.addEntity( new EnemyBullet(originObj.x, originObj.y, speed, 11.25*i, 'MoveAngle') ); } // 3 bullets 
+			break;
+		case 'down': 
+			game.addEntity( new EnemyBullet(originObj.x, originObj.y, speed, 11.25*8, 'MoveAngle') );
+			break;
+		case 'left': 
+			game.addEntity( new EnemyBullet(originObj.x, originObj.y, speed, 11.25*16, 'MoveAngle') );
+			break;
+		case 'right': 
+			game.addEntity( new EnemyBullet(originObj.x, originObj.y, speed, 11.25*0, 'MoveAngle') );
+			break;
+		case 'atPlayer':
+			var dx = target.x - originObj.x;
+			var dy = target.y - originObj.y;
+			var angle = Math.atan2(dy, dx) * 180 / 3.14;
+			if ( angle < 0 ) {
+				angle = angle + 360;
+			}
+			var div = Math.round(angle / 5.625);
+			game.addEntity( new EnemyBullet(originObj.x, originObj.y, speed, 5.625*div, 'MoveAngle') );
+			break;
+		case 'loop': 
+			game.addEntity( new EnemyBullet(originObj.x, originObj.y, speed, null, 'MoveLoop') );
+			break;
+		case 'gravity':
+			for (var i=0; i<9; i++){ game.addEntity( new EnemyBullet(originObj.x, originObj.y, speed, null, 'MoveGravity') ); } // 3 bullets 
+			break;
+		case 'normal':
+			switch(originObj.weaponLevel){
+				case 1:
+					game.addEntity( new PlayerBullet(originObj,'normal') );
+					break;
+				case 2:
+					game.addEntity( new PlayerBullet({ x: originObj.x-15, y: originObj.y },'normal') );
+					game.addEntity( new PlayerBullet({ x: originObj.x, y: originObj.y },'normal') );
+					game.addEntity( new PlayerBullet({ x: originObj.x+15, y: originObj.y },'normal') );
+					break;
+				case 3:
+					game.addEntity( new PlayerBullet({ x: originObj.x-30, y: originObj.y },'normal') );
+					game.addEntity( new PlayerBullet({ x: originObj.x-15, y: originObj.y },'normal') );
+					game.addEntity( new PlayerBullet({ x: originObj.x, y: originObj.y },'normal') );
+					game.addEntity( new PlayerBullet({ x: originObj.x+15, y: originObj.y },'normal') );
+					game.addEntity( new PlayerBullet({ x: originObj.x+30, y: originObj.y },'normal') );
+					break;
+			}
+			break;
+		case 'laser':
+			game.addEntity( new PlayerBullet(originObj,'laser') );
+			break;
+	}
+}
+
+////////////////////////////////////////////////////////////////
+/// Create Objects here using a mix of the different methods ///
+////////////////////////////////////////////////////////////////
+function Player(x,y){
+	playerEntity = this;
+	ObjActive.call( this, x,y,87,87 );
+	this.speed = 300;
+	this.update = ObjUpdatePlayer;
+	this.draw = ObjDraw;
+	this.clear = ObjClear;
+	this.inputMove = InputMove;
+	this.weaponType = 'normal';
+	this.weaponLevel = 2;
+	this.hitDistance = 30;
+	this.name = 'player';
+}
+
+function Enemy(x,y, speed, angle, type, name){
+	ObjActive.call( this, x,y,64,64 );
+	this.update = ObjUpdateEnemy;
+	this.draw = ObjDraw;
+	this.clear = ObjClear;
+	this.speed = speed;
+	this.name = name;
+	this.hp = 10;
+	if (angle != null){ this.vector = getVector(angle); }
+	switch(type){
+		case 'MoveDownUp': this.movement = MoveDownUp; break;
+		case 'MoveDown': this.movement = MoveDown; break;
+		case 'MoveWave': this.movement = MoveWave; break;
+		case 'MoveWaveLarge': this.movement = MoveWaveLarge; break;
+		case 'MoveSquareWave': this.movement = MoveSquareWave; break;
+		case 'MoveAngle': this.movement = MoveAngle; break; // bullet function
+	}
+	switch(name){
+		case 'enemy1': this.w = 87; this.h = 87; break;
+		case 'enemy2': this.w = 87; this.h = 103; break;
+		case 'enemy3': this.w = 103; this.h = 103; break;
+		case 'enemy4': this.w = 71; this.h = 111; break;
+		case 'enemy5': this.w = 71; this.h = 71; break;
+		case 'enemy6': this.w = 63; this.h = 63; break;
+	}
+}
+
+/*
+		case 'enemy1': game.context.drawImage(sprites,96*1,0,87,87, x, y, 87, 87); break;
+		case 'enemy2': game.context.drawImage(sprites,96*2,0,87,103, x, y, 87, 103); break;
+		case 'enemy3': game.context.drawImage(sprites,96*3,0,103,103, x, y, 103, 103); break;
+		case 'enemy4': game.context.drawImage(sprites,96*4,0,71,111, x, y, 71, 111); break;
+		case 'enemy5': game.context.drawImage(sprites,96*5,0,71,71, x, y, 71, 71); break;
+		case 'enemy6': game.context.drawImage(sprites,96*6,0,63,63, x, y, 63, 63); break;
+*/
+
+function EnemyBullet(x,y, speed, angle, type){
+	ObjActive.call( this, x,y,10,10 );
+	this.update = ObjUpdateBullet;
+	this.draw = ObjDraw;
+	this.clear = ObjClear;
+	this.speed = speed;
+	if (angle != null){ this.vector = getVector(angle); }
+	switch(type){
+		case 'MoveAngle': this.movement = MoveAngle; break;
+		case 'MoveLoop': this.movement = MoveLoop; break;
+		case 'MoveGravity': this.movement = MoveGravity; break;
+	}
+	this.weaponType = 'normal';
+	this.name = 'bullet';
+}
+
+function PlayerBullet(obj, type){
+	var x = obj.x;
+	var y = obj.y;
+	var w = 8;
+	var h = 8;
+	ObjActive.call( this, x-w/2,y,w,h );
+	this.update = ObjUpdatePlayerBullet;
+	this.draw = ObjDraw;
+	this.clear = ObjClear;
+	this.speed = 500;
+	this.vector = getVector(270);
+	switch(type){
+		case 'normal': this.movement = MoveAngle; break;
+		case 'laser':
+			this.update = ObjUpdateLaser;
+			this.movement = MoveLaser;
+			playerEntity.laserObj = this;
+			this.h = 640;
+			break;
+	}
+	this.name = 'playerbullet';
+}
+
+function Powerup(x,y){
+	ObjActive.call( this, x,y,32,32 );
+	this.color = '0,0,255';
+	this.speed = 100;
+	this.update = ObjUpdatePowerup;
+	this.draw = ObjDraw;
+	this.clear = ObjClear;
+	this.dx = Math.sin(Math.PI/2);
+	this.dy = Math.cos(Math.PI/4);
+	
+	var powerupType = Math.floor(Math.random() * (2 - 0 + 1)) + 0;
+	this.name = 'powerup' + powerupType;
+}
+////////////////////////////////////////////////////////////////
+//////////////////// Levels ///////////////////////
+////////////////////////////////////////////////////////////////
+function eventLevel0(){
+	switch(game.elapsedTime){
+		/* TEST */
+		/*
+		case 1*60:	add('enemy', 200, -64, 2); break;
+		case 2*60:	add('enemy', 200, -64, 3); break;
+		case 3*60:	add('enemy', 200, -64, 4); break;
+		*/
+		case 1*60:		add('enemy', 150, -94, 4); break;
+		case 1.5*60:	add('enemy', 150, -94, 4); break;
+		case 2*60:		add('enemy', 150, -94, 4); break;
+		case 2.5*60:	add('enemy', 150, -94, 4); break;
+		case 3*60:		add('enemy', 150, -94, 4); break;
+		
+		// Based on 60fps
+		// First 10 seconds
+		case 13*60:		add('enemy', 200, -64, 0); break;
+		case 13.5*60: add('enemy', 300, -64, 0); break;
+		case 14*60:		add('enemy', 100, -64, 0); break;
+		
+		// 20 seconds
+		case 20*60:		add('enemy', 200, -64, 1); break;
+		case 21*60:		add('enemy', 1024-100, -64, 0); break;
+		case 21.5*60:	add('enemy', 1024-200, -64, 0); break;
+		case 22*60:		add('enemy', 1024-300, -64, 0); break;
+		
+		// 30 seconds
+		case 30*60:		add('enemy', 200, -64, 0); break;
+		case 31*60: 	add('enemy', 264, -64, 0); break;
+		case 32*60: 	add('enemy', 400, -64, 0); break;
+		case 32.5*60: add('enemy', 464, -64, 0); break;
+		case 34*60: 	add('enemy', 200, -64, 0); break;
+		case 35*60: 	add('enemy', 264, -64, 0); break;
+
+		// 40 seconds
+	}
+}
+////////////////////////////////////////////////////////////////
+/////////////////// Add Enemies Function ///////////////////////
+////////////////////////////////////////////////////////////////
+
+/*
+function add(name, x, type)
+name: player, powerup or enemy
+x: x coordinate; NOTE: all enemies y position starts at -64
+
+*/
+function add(name, x, y, type){
+	switch(name){
+		case 'player':
+			break;
+		case 'powerup':
+			break;
+		case 'enemy':
+			switch(type){
+				case 0: game.addEntity( new Enemy(x, y, 100, null, 'MoveDown', 'enemy1') ); break;
+				case 1: game.addEntity( new Enemy(x, y, 250, null, 'MoveDownUp', 'enemy2') ); break;
+				case 2: game.addEntity( new Enemy(x, y, 100, null, 'MoveWave', 'enemy3') ); break;
+				case 3: game.addEntity( new Enemy(x, y, 50, null, 'MoveWaveLarge', 'enemy4') ); break;
+				case 4: game.addEntity( new Enemy(x, y, 200, null, 'MoveSquareWave', 'enemy5') ); break;
+				case 5: game.addEntity( new Enemy(x, y, 200, 11.25*2, 'MoveAngle', 'enemy6') ); break;
+			}
+			break;
+	}
+}
+
+////////////////////////////////////////////////////////////////
+//////////////////// Starting Game Stuff ///////////////////////
+////////////////////////////////////////////////////////////////
+var canvas = document.getElementById("canvas");
+var context = canvas.getContext("2d");
+var bgContext = document.getElementById("background").getContext("2d");
+
+var ASSET_MANAGER = new AssetManager();
+ASSET_MANAGER.queueDownload('img/SpriteSheet.png'); // Images for the game go in here, 1 image per line
+
+var game = new GameEngine();
+var playerEntity;
+var bulletCount = 0;
+
+game.init = function(ctx){
+	game.width = canvas.width;
+	game.height = canvas.height;
+	game.level = 0;
+	this.context = ctx;
+	keyListener();
+	starsGenerate(0, 10);
+	starsGenerate(1, 10);
+	starsGenerate(2, 10);
+	createSpriteSheet();
+	game.background = backgroundRun;
+	game.addEntity( new Player(512,500) );
+	game.addEntity( new Powerup(100, 100) ); // Bounces around
+	// game.addEntity( new Enemy(200, 0, 150, null, 'MoveDownUp') );
+	// game.addEntity( new Enemy(200, 0, 200, null, 'MoveDown') );
+	// game.addEntity( new Enemy(320, 0, 100, null, 'MoveWave') );
+	// game.addEntity( new Enemy(512, 0, 50, null, 'MoveWaveLarge') );
+	// game.addEntity( new Enemy(100, 1, 200, null, 'MoveSquareWave') );
+	// game.addEntity( new Enemy(100, 1, 200, 11.25*2, 'MoveAngle') );
+	// shoot({ x: 300, y: 150 }, game.entities[0], 'atPlayer'); // game.entities[0] should be playerEntity
+	// shoot({ x: 300, y: 150 }, null, 'fanRight');
+	// shoot({ x: 300, y: 150 }, null, 'fanLeft');
+	// shoot({ x: 300, y: 150 }, null, 'fanDown');
+	// shoot({ x: 300, y: 150 }, null, 'triple');
+	// shoot({ x: 300, y: 150 }, null, 'down');
+	// shoot({ x: 300, y: 150 }, null, 'left');
+	// shoot({ x: 300, y: 150 }, null, 'right');
+	// shoot({ x: 300, y: 150 }, null, 'loop');
+	// shoot({ x: 300, y: 150 }, null, 'gravity');
+}
+
+function createSpriteSheet(){
+	sprites.getContext('2d').drawImage( ASSET_MANAGER.getAsset('img/SpriteSheet.png'), 0, 0 );
+}
+
+var sprites = document.createElement('canvas');
+sprites.width = 768;
+sprites.height = 96;
+
+ASSET_MANAGER.downloadAll(function(){ 
+	game.init(context);
+	game.start();
+	document.getElementById('music').play();
+});
+function eventLevel1(){}
+function eventLevel2(){}
+function eventLevel3(){}
+function eventLevel4(){}
+function eventLevel5(){}
+</script>
+</body>
+</html>
